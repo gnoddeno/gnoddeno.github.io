@@ -26,10 +26,10 @@ description: >- # used by seo meta and the atom feed
 url: "https://gnoddeno.github.io"
 
 github:
-  username: github_username # change to your GitHub username
+  username: gnoddeno # change to your GitHub username
 
 instagram:
-  username: instagram_username # change to your Instagram username
+  username: gnoddeno # change to your Instagram username
 
 social:
   # Change to your full name.
@@ -38,8 +38,8 @@ social:
   email: hanran34@naver.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://instagram.com/username # change to your Instagram homepage
-    - https://github.com/username # change to your GitHub homepage
+    - https://instagram.com/gnoddeno # change to your Instagram homepage
+    - https://github.com/gnoddeno # change to your GitHub homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
@@ -95,10 +95,10 @@ theme_mode: # [light | dark]
 # will be added to all media resources (site avatar, posts' images, audio and video files) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-cdn: "https://chirpy-img.netlify.app"
+cdn: ""
 
 # the avatar on sidebar, support local or CORS resources
-avatar: "/commons/profile.png"
+avatar: "/assets/img/avatar.png"
 
 # The URL of the site-wide social preview image used in SEO `og:image` meta tag.
 # It can be overridden by a customized `page.image` in front matter.

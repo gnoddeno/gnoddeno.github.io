@@ -1,5 +1,6 @@
 /* sidebar */
 
+
 $sidebar-width: 260px !default; /* the basic width */
 $sidebar-width-large: 300px !default; /* screen width: >= 1650px */
 $sb-btn-gap: 0.8rem !default;
@@ -25,6 +26,6 @@ $code-dot-gap: 0.5rem !default;
 $code-icon-width: 1.75rem !default;
 
 /* fonts */
-
-$font-family-base: 'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
-$font-family-heading: Lato, 'Microsoft Yahei', sans-serif !default;
+$customFont : 'Pretendard' !default;
+$font-family-base: 'Pretendard', 'Source Sans Pro', 'Microsoft Yahei', sans-serif !default;
+$font-family-heading: 'Pretendard', Lato, 'Microsoft Yahei', sans-serif !default;
