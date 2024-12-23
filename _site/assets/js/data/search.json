@@ -1,6 +1,40 @@
 [
   
   {
+    "title": "포스트 꾸미기 심화",
+    "url": "/posts/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EA%BE%B8%EB%AF%B8%EA%B8%B0-%EC%8B%AC%ED%99%94/",
+    "categories": "Basic",
+    "tags": "Basic",
+    "date": "2024-12-23 16:30:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "포스트 꾸미기 심화Author가 나오지 않아요!전 포스트에 소개한 내용 중 Author에 이름을 적어도 출력되지 않는 문제가 발생한다. 이는 단순한 오류로 _data에서 author 등록을 하지 않았기 때문에 발생 한 오류이다._data↳authors.yml_data 폴더 내부 authors.yml을 열어보자authors.yml 안에는 친절하게 어떤 ...",
+    "content": "포스트 꾸미기 심화Author가 나오지 않아요!전 포스트에 소개한 내용 중 Author에 이름을 적어도 출력되지 않는 문제가 발생한다. 이는 단순한 오류로 _data에서 author 등록을 하지 않았기 때문에 발생 한 오류이다._data↳authors.yml_data 폴더 내부 authors.yml을 열어보자authors.yml 안에는 친절하게 어떤 형식으로 author를 등록해야 하는지 알려주고 있다.# -------------------------------------# {author_id}:#   name: {full name}#   twitter: {twitter_of_author}#   url: {homepage_of_author}# -------------------------------------위 형식에 맞게 작성한 뒤 사이트를 다시 열어보면 저자가 출력될 것이다!헤더H1 - heading# H1 - headingH2 - heading## H2 - headingH3 - heading### H3 - heading리스트순서 리스트  첫번쨰  두번째  세번째1. 첫번째2. 두번째3. 세번째순서없는 리스트  대          중                  소                    - 대 - 중  - 소ToDo 리스트  할 일          Step 1      Step 2      Step 3      - [] 할 일 - [] Step 1 - [] Step 2 - [] Step 3설명 리스트  서울      대한민국의 수도  서울: 대한민국의 수도블록 인용  This line shows the block quote&gt; This line shows the _block quote_프롬프트  ‘tip’ 유형의 프롬프트  ‘info’ 유형의 프롬프트  ‘warning’ 유형의 프롬프트  ‘dnager’ 유형의 프롬프트&gt; ‘tip’ 유형의 프롬프트{: .prompt-tip}&gt; ‘info’ 유형의 프롬프트{: .prompt-info}&gt; 'warning' 유형의 프롬프트{: .prompt-warning}&gt; 'dnager' 유형의 프롬프트{: .prompt-danger}"
+  },
+  
+  {
+    "title": "Github.io에 마크다운 포스트 작성하기",
+    "url": "/posts/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0/",
+    "categories": "Basic",
+    "tags": "Basic",
+    "date": "2024-12-23 16:00:00 +0900",
+    
+
+
+
+
+
+    
+    "snippet": "Github.io에 마크다운 포스트 작성하기MarkdownMarkdown은 텍스트 기반의 마크업 언어로 Github.io에서 포스트를 작성할 때 사용하게 된다.본인은 포스트를 작성할때 Notion을 사용하여 Markdown으로 변환, Vscode를 통해 수정한다.Markdown에 대해 더 자세하게 알고싶다면 https://www.markdownguid...",
+    "content": "Github.io에 마크다운 포스트 작성하기MarkdownMarkdown은 텍스트 기반의 마크업 언어로 Github.io에서 포스트를 작성할 때 사용하게 된다.본인은 포스트를 작성할때 Notion을 사용하여 Markdown으로 변환, Vscode를 통해 수정한다.Markdown에 대해 더 자세하게 알고싶다면 https://www.markdownguide.org 이곳을 참고하자.포스트 작성하기_posts↳2019-08-08 post1.md↳2019-08-08 post2.md↳2019-08-08 post3.md다음의 형태로 포스트를 작성할 수 있다.---title: 제목description: 설명author: 저자date: 날짜 +0900(한국시간 기준)categories: 카테고리tags: 태그---마크다운 제일 위에 위 항목을 추가해 주어야 정상적인 모습으로 포스트가 나타나게 되니 주의하자.date에 +0900은 대한민국이 협정 세계시를 기준으로 9시간 빠른 시간대이기 때문에 추가해 주도록 하자.결론간단하게 포스트를 어떻게 작성해야 하는지 두서없이 작성하였다.이 글은 내가 참고하기 위해 간단히 작성하였으며, 다른 사람에게도 도움이 되었으면 한다."
+  },
+  
+  {
     "title": "Getting Started",
     "url": "/posts/getting-started/",
     "categories": "Blogging, Tutorial",

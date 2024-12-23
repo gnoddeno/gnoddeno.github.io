@@ -30,22 +30,24 @@
 
   <!-- Begin Jekyll SEO tag v2.8.0 -->
 <meta name="generator" content="Jekyll v4.3.4" />
-<meta property="og:title" content="Tutorial" />
+<meta property="og:title" content="Github.io에 마크다운 포스트 작성하기" />
+<meta name="author" content="gnoddeno" />
 <meta property="og:locale" content="ko" />
-<meta name="description" content="전공 공부를 하며 느낀 점들을 기록하는 블로그입니다." />
-<meta property="og:description" content="전공 공부를 하며 느낀 점들을 기록하는 블로그입니다." />
-<link rel="canonical" href="http://localhost:4000/categories/tutorial/" />
-<meta property="og:url" content="http://localhost:4000/categories/tutorial/" />
+<meta name="description" content="간단한 문법 소개" />
+<meta property="og:description" content="간단한 문법 소개" />
+<link rel="canonical" href="http://localhost:4000/posts/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0/" />
+<meta property="og:url" content="http://localhost:4000/posts/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0/" />
 <meta property="og:site_name" content="Gnoddeno Is All You Need" />
-<meta property="og:type" content="website" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2024-12-23T16:00:00+09:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Tutorial" />
+<meta property="twitter:title" content="Github.io에 마크다운 포스트 작성하기" />
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","description":"전공 공부를 하며 느낀 점들을 기록하는 블로그입니다.","headline":"Tutorial","url":"http://localhost:4000/categories/tutorial/"}</script>
+{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"gnoddeno","url":"https://github.com/gnoddeno/"},"dateModified":"2024-12-23T16:00:00+09:00","datePublished":"2024-12-23T16:00:00+09:00","description":"간단한 문법 소개","headline":"Github.io에 마크다운 포스트 작성하기","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/posts/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0/"},"url":"http://localhost:4000/posts/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0/"}</script>
 <!-- End Jekyll SEO tag -->
 
 
-  <title>Tutorial | Gnoddeno Is All You Need
+  <title>Github.io에 마크다운 포스트 작성하기 | Gnoddeno Is All You Need
   </title>
 
   <link rel = "icon" type = "image/png" href="assets/img/favicons/favicon.ico">
@@ -90,9 +92,16 @@
   <!-- 3rd-party Dependencies -->
 
   
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tocbot@4.32.2/dist/tocbot.min.css">
   
 
+  
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.min.css">
+  
+
+  
+    <!-- Image Popup -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox@3.3.0/dist/css/glightbox.min.css">
   
 
   <!-- Scripts -->
@@ -108,6 +117,13 @@
 <!-- layout specified -->
 
 
+  
+
+  
+    <!-- image lazy-loading & popup & clipboard -->
+    
+  
+
 
 
 
@@ -157,9 +173,37 @@
 
   
 
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
+
+  
+    
+
+    
+
+  
 
 
-  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js"></script>
+
+  <script defer src="https://cdn.jsdelivr.net/combine/npm/simple-jekyll-search@1.10.0/dest/simple-jekyll-search.min.js,npm/loading-attribute-polyfill@2.1.1/dist/loading-attribute-polyfill.umd.min.js,npm/glightbox@3.3.0/dist/js/glightbox.min.js,npm/clipboard@2.0.11/dist/clipboard.min.js,npm/dayjs@1.11.13/dayjs.min.js,npm/dayjs@1.11.13/locale/en.js,npm/dayjs@1.11.13/plugin/relativeTime.js,npm/dayjs@1.11.13/plugin/localizedFormat.js,npm/tocbot@4.32.2/dist/tocbot.min.js"></script>
 
 
 
@@ -167,11 +211,15 @@
 
 
 
-<script defer src="/assets/js/dist/misc.min.js"></script>
+<script defer src="/assets/js/dist/post.min.js"></script>
 
 
 
 <!-- Pageviews -->
+
+  
+
+  
 
 
 
@@ -370,14 +418,10 @@
           
         
           
-            <span>
-              <a href="/categories/">Categories</a>
-            </span>
-          
         
           
             
-              <span>Tutorial</span>
+              <span>Github.io에 마크다운 포스트 작성하기</span>
             
 
           
@@ -391,7 +435,7 @@
     </button>
 
     <div id="topbar-title">
-      Category
+      Post
     </div>
 
     <button type="button" id="search-trigger" class="btn btn-link">
@@ -417,78 +461,399 @@
         <div class="row flex-grow-1">
           <main aria-label="Main Content" class="col-12 col-lg-11 col-xl-9 px-md-4">
             
+              <!-- Refactor the HTML structure -->
+
+
+
+<!--
+  In order to allow a wide table to scroll horizontally,
+  we suround the markdown table with `<div class="table-wrapper">` and `</div>`
+-->
+
+
+
+<!--
+  Fixed kramdown code highlight rendering:
+  https://github.com/penibelst/jekyll-compress-html/issues/101
+  https://github.com/penibelst/jekyll-compress-html/issues/71#issuecomment-188144901
+-->
+
+
+
+<!-- Change the icon of checkbox -->
+
+
+
+<!-- Handle images -->
+
+
+
+
+
+<!-- Add header for code snippets -->
+
+
+
+<!-- Create heading anchors -->
+
+
+
+
+
+  
+  
+
+  
+    
+    
+
+    
+      
+        
+        
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+      
+
+      
+      
+
+      
+      
+      
+
+      
+    
+
+    
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+  
+  
+
+  
+
+
+
+
+<!-- return -->
+
+
+
+
+
+
+
+
+
+
+<article class="px-1" data-toc="true">
+  <header>
+    <h1 data-toc-skip>Github.io에 마크다운 포스트 작성하기</h1>
+    
+      <p class="post-desc fw-light mb-4">간단한 문법 소개</p>
+    
+
+    <div class="post-meta text-muted">
+      <!-- published date -->
+      <span>
+        Posted
+        <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1734937200"
+  data-df="ll"
+  
+    data-bs-toggle="tooltip" data-bs-placement="bottom"
+  
+>
+  Dec 23, 2024
+</time>
+
+      </span>
+
+      <!-- lastmod date -->
+      
+
+      
+
+      <div class="d-flex justify-content-between">
+        <!-- author(s) -->
+        <span>
+          
+
+          By
+
+          <em>
+            
               
+                <a href="https://github.com/gnoddeno/">gnoddeno</a>
+                
+              
+            
+          </em>
+        </span>
+
+        <div>
+          <!-- pageviews -->
+          
+
+          <!-- read time -->
+          <!-- Calculate the post's reading time, and display the word count in tooltip -->
 
 
 
-<article class="px-1">
-  
-    
-
-
-
-<div id="page-category">
-  <h1 class="ps-lg-2">
-    <i class="far fa-folder-open fa-fw text-muted"></i>
-    Tutorial
-    <span class="lead text-muted ps-2">2</span>
-  </h1>
-
-  <ul class="content ps-0">
-    
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/getting-started/">Getting Started</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
+<!-- words per minute -->
 
 
 
 
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1565355300"
-  data-df="ll"
-  
+
+
+
+
+
+
+<!-- return element -->
+<span
+  class="readtime"
+  data-bs-toggle="tooltip"
+  data-bs-placement="bottom"
+  title="324 words"
 >
-  Aug  9, 2019
-</time>
+  <em>1 min</em> read</span>
 
-      </li>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  
+    <div id="toc-bar" class="d-flex align-items-center justify-content-between invisible">
+      <span class="label text-truncate">Github.io에 마크다운 포스트 작성하기</span>
+      <button type="button" class="toc-trigger btn me-1">
+        <i class="fa-solid fa-list-ul fa-fw"></i>
+      </button>
+    </div>
+
+    <button id="toc-solo-trigger" type="button" class="toc-trigger btn btn-outline-secondary btn-sm">
+      <span class="label ps-2 pe-1">Contents</span>
+      <i class="fa-solid fa-angle-right fa-fw"></i>
+    </button>
+
+    <dialog id="toc-popup" class="p-0">
+      <div class="header d-flex flex-row align-items-center justify-content-between">
+        <div class="label text-truncate py-2 ms-4">Github.io에 마크다운 포스트 작성하기</div>
+        <button id="toc-popup-close" type="button" class="btn mx-1 my-1 opacity-75">
+          <i class="fas fa-close"></i>
+        </button>
+      </div>
+      <div id="toc-popup-content" class="px-4 py-3 pb-4"></div>
+    </dialog>
+  
+
+  <div class="content">
+    <h1 id="githubio에-마크다운-포스트-작성하기">Github.io에 마크다운 포스트 작성하기</h1>
+
+<h2 id="markdown"><span class="me-2">Markdown</span><a href="#markdown" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>Markdown은 텍스트 기반의 마크업 언어로 Github.io에서 포스트를 작성할 때 사용하게 된다.</p>
+
+<p>본인은 포스트를 작성할때 Notion을 사용하여 Markdown으로 변환, Vscode를 통해 수정한다.</p>
+
+<p>Markdown에 대해 더 자세하게 알고싶다면 <a href="https://www.markdownguide.org/">https://www.markdownguide.org</a> 이곳을 참고하자.</p>
+
+<hr />
+
+<h2 id="포스트-작성하기"><span class="me-2">포스트 작성하기</span><a href="#포스트-작성하기" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<div class="language-terminal highlighter-rouge"><div class="code-header">
+        <span data-label-text="Terminal"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre></td><td class="rouge-code"><pre><span class="go">_posts
+↳2019-08-08 post1.md
+↳2019-08-08 post2.md
+↳2019-08-08 post3.md
+</span></pre></td></tr></tbody></table></code></div></div>
+
+<p>다음의 형태로 포스트를 작성할 수 있다.</p>
+
+<div class="language-terminal highlighter-rouge"><div class="code-header">
+        <span data-label-text="Terminal"><i class="fas fa-code fa-fw small"></i></span>
+      <button aria-label="copy" data-title-succeed="Copied!"><i class="far fa-clipboard"></i></button></div><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="rouge-code"><pre><span class="go">---
+title: 제목
+description: 설명
+author: 저자
+date: 날짜 +0900(한국시간 기준)
+categories: 카테고리
+tags: 태그
+---
+</span></pre></td></tr></tbody></table></code></div></div>
+
+<p>마크다운 제일 위에 위 항목을 추가해 주어야 정상적인 모습으로 포스트가 나타나게 되니 주의하자.</p>
+
+<p>date에 +0900은 대한민국이 협정 세계시를 기준으로 9시간 빠른 시간대이기 때문에 추가해 주도록 하자.</p>
+
+<hr />
+
+<h2 id="결론"><span class="me-2">결론</span><a href="#결론" class="anchor text-muted"><i class="fas fa-hashtag"></i></a></h2>
+
+<p>간단하게 포스트를 어떻게 작성해야 하는지 두서없이 작성하였다.</p>
+
+<p>이 글은 내가 참고하기 위해 간단히 작성하였으며, 다른 사람에게도 도움이 되었으면 한다.</p>
+
+
+  </div>
+  <div class="utterance-light" id="comment_light">
+    <script src="https://utteranc.es/client.js"
+      repo="gnoddeno/gnoddeno.github.io"
+      issue-term="pathname"
+      theme="github-light"
+      crossorigin="anonymous"
+      async>
+    </script>
+  </div>
+  <div class="post-tail-wrapper text-muted">
+    <!-- categories -->
     
-      <li class="d-flex justify-content-between px-md-3">
-        <a href="/posts/write-a-new-post/">Writing a New Post</a>
-        <span class="dash flex-grow-1"></span>
-        <!--
-  Date format snippet
-  See: ${JS_ROOT}/utils/locale-dateime.js
--->
-
-
-
-
-<time
-  
-    class="text-muted small text-nowrap"
-  
-  data-ts="1565244600"
-  data-df="ll"
-  
->
-  Aug  8, 2019
-</time>
-
-      </li>
+      <div class="post-meta mb-3">
+        <i class="far fa-folder-open fa-fw me-1"></i>
+        
+          <a href="/categories/basic/">Basic</a>
+      </div>
     
-  </ul>
+
+    <!-- tags -->
+    
+      <div class="post-tags">
+        <i class="fa fa-tags fa-fw me-1"></i>
+        
+          <a
+            href="/tags/basic/"
+            class="post-tag no-text-decoration"
+          >Basic</a>
+        
+      </div>
+    
+
+    <div
+      class="
+        post-tail-bottom
+        d-flex justify-content-between align-items-center mt-5 pb-2
+      "
+    >
+      <div class="license-wrapper">
+        
+          
+
+          This post is licensed under 
+        <a href="https://creativecommons.org/licenses/by/4.0/">
+          CC BY 4.0
+        </a>
+         by the author.
+        
+      </div>
+
+      <!-- Post sharing snippet -->
+
+<div class="share-wrapper d-flex align-items-center">
+  <span class="share-label text-muted">Share</span>
+  <span class="share-icons">
+    
+    
+    
+
+    
+
+      
+
+      <a href="https://twitter.com/intent/tweet?text=Github.io%EC%97%90%20%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4%20%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0%20-%20Gnoddeno%20Is%20All%20You%20Need&url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F%25ED%258F%25AC%25EC%258A%25A4%25ED%258A%25B8-%25EC%259E%2591%25EC%2584%25B1%25ED%2595%2598%25EA%25B8%25B0%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Twitter" aria-label="Twitter">
+        <i class="fa-fw fa-brands fa-square-x-twitter"></i>
+      </a>
+    
+
+      
+
+      <a href="https://www.facebook.com/sharer/sharer.php?title=Github.io%EC%97%90%20%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4%20%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0%20-%20Gnoddeno%20Is%20All%20You%20Need&u=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F%25ED%258F%25AC%25EC%258A%25A4%25ED%258A%25B8-%25EC%259E%2591%25EC%2584%25B1%25ED%2595%2598%25EA%25B8%25B0%2F" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Facebook" aria-label="Facebook">
+        <i class="fa-fw fab fa-facebook-square"></i>
+      </a>
+    
+
+      
+
+      <a href="https://t.me/share/url?url=http%3A%2F%2Flocalhost%3A4000%2Fposts%2F%25ED%258F%25AC%25EC%258A%25A4%25ED%258A%25B8-%25EC%259E%2591%25EC%2584%25B1%25ED%2595%2598%25EA%25B8%25B0%2F&text=Github.io%EC%97%90%20%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4%20%ED%8F%AC%EC%8A%A4%ED%8A%B8%20%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0%20-%20Gnoddeno%20Is%20All%20You%20Need" target="_blank" rel="noopener" data-bs-toggle="tooltip" data-bs-placement="top" title="Telegram" aria-label="Telegram">
+        <i class="fa-fw fab fa-telegram"></i>
+      </a>
+    
+
+    <button
+      id="copy-link"
+      aria-label="Copy link"
+      class="btn small"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Copy link"
+      data-title-succeed="Link copied successfully!"
+    >
+      <i class="fa-fw fas fa-link pe-none fs-6"></i>
+    </button>
+  </span>
 </div>
 
-  
+    </div>
+    <!-- .post-tail-bottom -->
+  </div>
+  <!-- div.post-tail-wrapper -->
 </article>
+
 
             
           </main>
@@ -668,12 +1033,146 @@
             </div>
 
             
+              
+              
+
+
+
+
+
+
+  <div class="toc-border-cover z-3"></div>
+  <section id="toc-wrapper" class="invisible position-sticky ps-0 pe-4 pb-4">
+    <h2 class="panel-heading ps-3 pb-2 mb-0">Contents</h2>
+    <nav id="toc"></nav>
+  </section>
+
+
+            
           </aside>
         </div>
 
         <div class="row">
           <!-- tail -->
           <div id="tail-wrapper" class="col-12 col-lg-11 col-xl-9 px-md-4">
+            
+              
+              <!-- Recommend the other 3 posts according to the tags and categories of the current post. -->
+
+<!-- The total size of related posts -->
+
+
+<!-- An random integer that bigger than 0 -->
+
+
+<!-- Equals to TAG_SCORE / {max_categories_hierarchy} -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  <aside id="related-posts" aria-labelledby="related-label">
+    <h3 class="mb-4" id="related-label">Further Reading</h3>
+    <nav class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4 mb-4">
+      
+        <article class="col">
+          <a href="/posts/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EA%BE%B8%EB%AF%B8%EA%B8%B0-%EC%8B%AC%ED%99%94/" class="post-preview card h-100">
+            <div class="card-body">
+              <!--
+  Date format snippet
+  See: ${JS_ROOT}/utils/locale-dateime.js
+-->
+
+
+
+
+<time
+  
+  data-ts="1734939000"
+  data-df="ll"
+  
+>
+  Dec 23, 2024
+</time>
+
+              <h4 class="pt-0 my-2">포스트 꾸미기 심화</h4>
+              <div class="text-muted">
+                <p>간단한 문법 소개</p>
+              </div>
+            </div>
+          </a>
+        </article>
+      
+    </nav>
+  </aside>
+  <!-- #related-posts -->
+
+
+            
+              
+              <!-- Navigation buttons at the bottom of the post. -->
+
+<nav class="post-navigation d-flex justify-content-between" aria-label="Post Navigation">
+  
+  
+
+  
+    <a
+      href="/posts/getting-started/"
+      class="btn btn-outline-primary"
+      aria-label="Older"
+    >
+      <p>Getting Started</p>
+    </a>
+  
+
+  
+    <a
+      href="/posts/%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EA%BE%B8%EB%AF%B8%EA%B8%B0-%EC%8B%AC%ED%99%94/"
+      class="btn btn-outline-primary"
+      aria-label="Newer"
+    >
+      <p>포스트 꾸미기 심화</p>
+    </a>
+  
+</nav>
+
             
 
             <!-- The Footer -->
@@ -875,6 +1374,11 @@
     
 
     <!-- Embedded scripts -->
+
+    
+      
+      <!-- The comments switcher -->
+
 
     
 
