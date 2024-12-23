@@ -1,9 +1,9 @@
 
 
 {
-  "name": "Chirpy",
-  "short_name": "Chirpy",
-  "description": "A minimal, responsive and feature-rich Jekyll theme for technical writing.",
+  "name": "Gnoddeno Is All You Need",
+  "short_name": "Gnoddeno Is All You Need",
+  "description": "전공 공부를 하며 느낀 점들을 기록하는 블로그입니다.",
   "icons": [
     {
       "src": "/assets/img/favicons/android-chrome-192x192.png",
