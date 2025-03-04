@@ -1,5 +1,5 @@
 ---
-title: Remix: Rebalanced Mixup
+title: Remix - Rebalanced Mixup
 author: gnoddeno
 date: 2024-06-27 16:30:00 +0900
 categories: Paper Review
