@@ -48,7 +48,7 @@
 
   .lineno {
     text-align: right;
-    color: var(--highlight-lineno-color);
+    color: #4a4a4a;
     -webkit-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
@@ -137,11 +137,10 @@ div[class^='language-'] {
         width: v.$code-dot-size;
         height: v.$code-dot-size;
         border-radius: 50%;
-        background-color: var(--code-header-muted-color);
-        box-shadow: (v.$code-dot-size + v.$code-dot-gap) 0 0
-            var(--code-header-muted-color),
-          (v.$code-dot-size + v.$code-dot-gap) * 2 0 0
-            var(--code-header-muted-color);
+        background-color: #FF5F56; // 왼쪽 빨간색
+        box-shadow: 
+          (v.$code-dot-size + v.$code-dot-gap) 0 0 #FFBD2E, // 가운데 노란색
+          (v.$code-dot-size + v.$code-dot-gap) * 2 0 0 #999999; // 오른쪽 초록색
       }
 
       span {
