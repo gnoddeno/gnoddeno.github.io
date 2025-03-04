@@ -1,0 +1,214 @@
+---
+title: Remix: Rebalanced Mixup
+author: gnoddeno
+date: 2024-06-27 16:30:00 +0900
+categories: Paper Review
+tags: Data arguments
+---
+
+# Remix: Rebalanced Mixup
+[Remix: Rebalanced Mixup](https://arxiv.org/abs/2007.03943)
+
+# Abstract
+
+- 심층 이미지 분류기는 학습 데이터의 클래스 불균형이 심할 결우 성능이 저하되는 경향이 있음.
+- 기존 Mixup의 공식을 완화하고, 특징과 라벨의 혼합 요소를 분리하는 새로운 정규화 기법인 Remix 제안.
+- 실험 결과 Remix가 기존 방법보다 일관되고 상당한 개선 효과를 보임.
+
+# 1 Introduction
+
+- Deep Neural Networks
+    - 성능에 중요한 영향을 미치는 요소중 하나가 학습 데이터
+- Data-imbalanced
+    - 학습 데이터 중 클래스 간의 균형있는 분포를 유지하도록 라벨링되고 설계되어야 하나, 실제로 특정 클래스가 다른 클래스보다 훨씬 더 많은 비중을 차지
+    - 데이터 불균형은 추론할 때 신경망이 다수 클래스에 편향되게 만들 수 있음.
+- 이 문제를 해결하기 위해 사용한 기존의 방법
+    - Re-weighting
+        - 클래스별로 가중치를 조정하는데 중점을 둠
+        - 극단적인 불균형 상태에서 최적화를 어렵게 만드는 경향이 있음.
+    - Re-sampling
+        - 균형 잡힌 신경망 모델을 재구성하는데 중점을 둠
+- 대규모 데이터셋에 편리하게 통합할 수 있는 솔루션을 마련하기 위해 일반적으로 추가 비용이 거의 들지 않는 정규화 기법에 중점을 둔다.
+    - Mixup
+        - 특징과 레이블 쌍의 볼록한 조합을 통해 가상으로 생성된 혼합 샘플로 신경 모델을 훈련.
+    - Remix
+        - 가상 혼합 샘플을 구성할 때 특징과 라벨의 혼합 계수가 서로 다를 수 있음.
+
+![‘나비’ 라벨이 소수 클래스에 속하고 ‘노란 식물’ 라벨이 다수 클래스에 속한다고 가정 하였을 때, 두 이미지의 모든 선형 조합은 점선 위에 존재한다. 가운데 이미지처럼 ‘나비’가 70%, ‘노란 식물’이 30%인 혼합 이미지의 경우 Mixup은 라벨을 70% ‘나비’와 30% ‘노란 식물’로 할당한다. Remix의 경우 소수 클래스에 유리하도록 100% ‘나비’ 같이 라벨을 할당한다.](https://github.com/user-attachments/assets/63502636-0ac0-4840-ad5b-ee54c38d66f0)
+
+‘나비’ 라벨이 소수 클래스에 속하고 ‘노란 식물’ 라벨이 다수 클래스에 속한다고 가정 하였을 때, 두 이미지의 모든 선형 조합은 점선 위에 존재한다. 가운데 이미지처럼 ‘나비’가 70%, ‘노란 식물’이 30%인 혼합 이미지의 경우 Mixup은 라벨을 70% ‘나비’와 30% ‘노란 식물’로 할당한다. Remix의 경우 소수 클래스에 유리하도록 100% ‘나비’ 같이 라벨을 할당한다.
+
+# 2 Related Works
+
+- Re-Weighting
+    - 각 클래스 또는 샘플의 중요도를 조정하여 비용 또는 손실을 튜닝하는 방법
+    - 일반적으로 클래스 간 불균형이 극도로 심한 경우 Re-Weighting방식은 성능이 저하된다.
+- Re-Sampling
+    - 소수 클래스를 과다 샘플링하거나 다수 클래스를 과소 샘플링하여 균형 잡힌 데이터셋으로 재구성 하는 방법.
+    - 소수 클래스를 과다 샘플링하면 해당 샘플에 과적합이 발생할 수 있음.
+    - 다수 클래스를 과소 샘플링 하면 데이터와 정보의 불균형이 심할 때 낭비될 수 있음.
+- Alternative Traning Objectives
+    - Focal Loss는 객체 감지 작업에서 클래스 불균형 문제를 해결하기 위해 제안된 손실 함수.
+        - 교차 엔트로피 손실에 변조 용어를 추가하여, 쉬운 예제의 기여도를 줄이고 어려운 예제의 기여도를 높임
+        - 객체 감지 작업에서 상당한 개선을 하였으나, 대규모 불균형 이미지 분류에는 효과적이지 않음.
+- Mixup-based Regularization
+    - Mixup은 샘플의 보간을 통해 학습하는 정규화 기법
+    - 간단하고 DNN의 일반화를 개선하는데 매우 효과적
+
+# 3 Preliminaries
+
+## 3.1 Mixup
+
+- Mixup은 DNN의 일반화를 개선하기 위한 정규화 기법
+- 두 샘플의 특징과 라벨을 선형적으로 결합하여 새로운 샘플을 만들어 내는 것
+
+![λ는 0과 1사이 값을 가지며, 베타 분포에서 샘플링 된다.](https://github.com/user-attachments/assets/27b54b65-55a5-409b-9de5-84d2eb53d8c4)
+
+λ는 0과 1사이 값을 가지며, 베타 분포에서 샘플링 된다.
+
+## 3.2 Manifold Mixup
+
+- Manifold Mixup은 특징 공간 대신 임베딩 공간에서 샘플을 섞는 기법
+- 더 깊은 레이어에서 보간을 수행하여 믹스업보다 더 많은 훈련 신호를 제공하므로 일반화를 더욱 향상시킬 수 있음.
+
+![gk(x)는 레이어 k까지의 순전파를 나타냄](https://github.com/user-attachments/assets/68eafdc5-9ac8-45bb-9b85-cc7216d7103c)
+
+gk(x)는 레이어 k까지의 순전파를 나타냄
+
+## 3.3 CutMix
+
+- CutMix는 전체 입력 특징 공간에서 샘플을 섞는 대신, 일부 패치를 마스킹하여 혼합 샘플을 생성하는 방법
+
+![M은 마스크를 나타내며, ⊙는 요소별 곱셈을 의미한다.](https://github.com/user-attachments/assets/1fb14645-8b9d-4dc4-8344-8e3801c8ae1e)
+
+M은 마스크를 나타내며, ⊙는 요소별 곱셈을 의미한다.
+
+# 4 Remix
+
+- 기존의 Mixup, Manifold Mixup, CutMix 방법들은 샘플의 특징과 라벨을 혼합할 때 동일한 λ를 사용한다. → 데이터가 불균형한 경우 효율성이 낮다.
+- Remix는 특징과 라벨의 혼합인자(λ)를 분리하여 설정한다. 이는 소수 클래스에 더 높은 가중치를 부여할 수 있어, 소수 클래스에 유리한 라벨을 설정할 수 있다.
+
+![Image](https://github.com/user-attachments/assets/c3877fa2-413a-4aa8-9536-3e2e159d6d42)
+
+- 라벨 혼합 인자 λy 정의
+
+![ni와 nj는 샘플 i와 j의 클래스에 속하는 샘플의 수 | κ와 τ는 하이퍼파라미터](https://github.com/user-attachments/assets/edcafdc9-8d06-4b50-9977-90b309aadeb9)
+
+ni와 nj는 샘플 i와 j의 클래스에 속하는 샘플의 수 | κ와 τ는 하이퍼파라미터
+
+![Untitled](https://github.com/user-attachments/assets/611d5b3c-9b83-46fc-8ca2-ab5aa815ad65)
+
+- xi가 xj에 k-Majority이고 다른 조건이 충족되면 λy는 0으로 설정되어 합성된 라벨이 소수 클래스 yj에 100% 할당된다.
+- 결정 경계 이동
+    - Remix는 소수 클래스에 유리하게 라벨을 조정하여, 결정 경계를 다수 클래스 쪽으로 밀어낸다.
+    
+    ![하이퍼파라미터 τ가 결정 경계에 어떤 영향을 미치는지 보여주는 그림, 파란색과 빨간색 점은 특징 공간에서 다수 샘플과 소수 샘플을 나타낸다. 점선은 가능한 모든 혼합 샘플을 나타내고 검은색 실선은 결정 경계를 나타낸다.](https://github.com/user-attachments/assets/1f5141d6-4704-4d59-b089-c0908b4cd747)
+    
+    하이퍼파라미터 τ가 결정 경계에 어떤 영향을 미치는지 보여주는 그림, 파란색과 빨간색 점은 특징 공간에서 다수 샘플과 소수 샘플을 나타낸다. 점선은 가능한 모든 혼합 샘플을 나타내고 검은색 실선은 결정 경계를 나타낸다.
+    
+- Remix는 불균형 데이터셋 학습에 이점을 보인다.
+
+![Remix의 알고리즘](https://github.com/user-attachments/assets/59ddd165-f482-43b3-b009-59f3975cb815)
+
+Remix의 알고리즘
+
+- 초기화, 반복, 종료의 3단계로 구성
+    - 초기화
+        - 모델의 파라미터 θ를 랜덤하게 초기화
+    - 반복
+        - 모델이 수렴할 때까지 반복
+        - 데이터셋 D에서 M개의 샘플 쌍을 무작위로 선택 (SampleParis(D, M))
+        - Beta 분포로부터 λx 샘플링
+        - RemixImage, LabelMixingFactor, RemixLabel을 사용하여 (8),(9),(10) 수행
+        - 각 샘플 쌍에 대한 처리가 끝나면 반복 종료
+        - 새로운 샘플에 대한 손실 L(θ) 계산
+        - 경사 하강법을 사용하여 모델 파라미터 θ업데이트
+    - 종료
+        - 모델이 수렴(손실이 더 이상 줄어들지 않으면)하면 종료
+
+# 5 Experiments
+
+## 5.1 Datesets
+
+- CIFAR-10, CIFAR-100, CINIC-10 데이터셋을 사용
+- 실제 대규모 불균형 데이터 세트인 iNatural - ist 2018 사용
+
+### CIFAR and CINIC
+
+<img width="1261" alt="Image" src="https://github.com/user-attachments/assets/c3bbbdb2-9a78-4897-b5df-e05f7b081671" />
+
+- 기존 연구의 코드를 포팅하여 동일한 환경에서 실험.
+- CIFAR-10, CIFAR-100 데이터셋에는 ResNet-32, CINIC-10 데이터셋에는 ResNet-18 사용
+- 300 에포크동안 학습하며, 일정 에포크마다 학습률 감소.
+- 확률적 경사 하강법(SGD)을 사용하여 모델 학습.
+
+- 데이터 증강 기법을 사용하여 다양한 데이터 변형을 학습.
+- 재가중치 및 재샘플링 기법을 적절한 시점에서 적용.
+- 하이퍼파라미터 τ=0.5, κ=3 설정으로 일관된 성능 개선.
+
+## 5.2 Results on Imbalanced CIFAR and CINIC
+
+### CIFAR
+
+![Image](https://github.com/user-attachments/assets/885676c8-cf9c-4fcd-b82d-270189812039)
+- Remix는 기존의 다양한 기법들보다 불균형 데이터셋에서 일관되게 높은 성능을 보임.
+- Remix는 다른 방법들과 결합하여 사용해도 높은 정확도를 유지함.
+- Step 불균형과 Long-tailed 불균형 모두에서 Remix는 높은 정확도를 나타냄.
+
+### CINIC
+
+![Image](https://github.com/user-attachments/assets/01d264a2-85a6-4d15-8ea7-41add1da3b07)
+
+- Remix-DRS와 Remix-DRW는 Remix를 DRS, DRW와 결합하여, 불균형 데이터셋에서 최고 성능을 보임.
+- Step 불균형과 Long-tailed 불균형 모두에서 Remix 기법이 매우 효과적임.
+- Remix-DRW가 특히 모든 기법 중 가장 높은 정확도를 보임.
+
+Remix-DRS와 Remix-DRW가 높은 정확성을 보이는 이유
+
+- λy(라벨 혼합 인자)가 0 또는 1로 설정된 경우, 라벨에 대한 불균형 인식 믹싱 방정식에서 Remix 방법의 개선이 이루어짐
+- λy가 0 또는 1이 되도록 하는 조건이 더 자주 충족될수록 학습 알고리즘이 데이터 불균형을 조정할 기회가 더 많이 주어짐.
+
+## 5.3 Results on iNaturalist 2018
+
+![Image](https://github.com/user-attachments/assets/b2be178d-9310-4742-86fd-999d80968cea)
+- SGD를 스케줄로 사용한 방법들 중 Remix가 가장 낮은 오류율을 보임
+- Remix를 200에포크동안 DRS 또는 DRW를 스케줄로 사용하여 학습한 경우 다른 모든 방법들보다 낮은 오류율을 보임
+- Remix는 다른 최첨단 모델들보다 우수.
+- 훈련 시간 측면에서 훈련 비용이 거의 동일하게 유지된다.
+
+## 5.4 Ablation Studies
+
+- 데이터 불균형 문제를 해결하기 위한 일반적인 접근 방식 중 하나는 단순히 리샘플링 또는 가중치 재조정 기법을 Mixup과 결합하는 것
+
+![Image](https://github.com/user-attachments/assets/ad3f2b20-9a74-4285-8c43-c01c6a02b2c0)
+
+
+- Remix는 Mixup보다 일관되게 높은 성능을 보임 → Remix가 불균형 데이터를 처리하는데 더 효과적임
+- long-tailed보다 step유형에서 개선효과가 더 크게 나타나는데, 이는 λy(라벨 혼합 인자)가 0 또는 1이 되는 가능성 때문
+
+![Untitled](https://github.com/user-attachments/assets/076cace8-322e-444c-b09d-710e99a94e21)
+
+- Manifold Mixup 및 CutMix와 같은 다른 Mixup기반 정규화와 함께 적용 가능
+- 불균형 비율이 높아질수록 Remix와 다른 정규화를 함께 적용하는 것이 바닐라 버전의 방법보다 유의미하게 나음.
+
+## 5.5 Qualitative Analysis
+
+- Remix의 효과를 더 자세히 확인하기 위해 일반적으로 사용되는 데이터셋 “two blobs”, “two moons”, “two circles” 사용
+
+![Image](https://github.com/user-attachments/assets/1ca90372-d985-42a6-b44d-c78a4fd51bd1)
+
+
+- 세 가지 경우 모두 정규화가 다수 클래스에 대한 학습 정확도를 일부 희생
+- ERM의 경우 데이터 불균형 문제를 제대로 처리하지 못하여 불안정한 결정 경계 형성
+- Mixup의 경우 데이터를 섞어 새로운 샘플을 만들지만, 여전히 데이터 불균형 문제를 완벽히 해결하지 못함
+- Remix의 경우 Mixup 기법을 개선하여, 데이터 불균형 문제를 매우 효과적으로 해결하고, 안정적이고 정확한 결정 경계를 형성
+
+# 6 Conclusions and Future Work
+
+- 클래스 불균형으로 나타나는 롱테일 문제를 해결하기 위해 소수 클래스에 더 많은 가중치를 주는 Remix라는 새로운 방법을 사용해 해결
+- 소수 클래스에 더 높은 가중치를 부여하여, 다수 클래스 쪽으로 결정 경계를 이동시킨다. 이는 롱테일 문제에서 소수 클래스의 인식을 개선한다.
+- 다양한 데이터셋에서 기존의 방법들보다 개선된 성능을 보인다.
+- 다양한 하이퍼파라미터 값에 대해 강건한 성능을 보인다.
+- 기존의 다른 방법들과 쉽게 결합하여 사용할 수 있다.
+- Remix의 이론적 특성을 더 깊이 연구 할 필요가 있다. → 더 나은 솔루션을 개발할 수 있다.
+- 다른 종류의 데이터 불균형 문제에 Remix를 적용하는 연구를 진행할 계획
